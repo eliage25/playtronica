@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>playtronica</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.4.1/dist/p5.sound.min.js"></script>
+</head>
+<body>
+    <aside class="simulator" aria-labelledby="simulator-title">
+        <header class="simulator__header">
+            <div>
+                <p class="simulator__eyebrow">VIRTUAL INPUT</p>
+                <h1 id="simulator-title">Conductive objects</h1>
+            </div>
+            <span class="simulator__status" aria-label="Simulation only">SIM</span>
+        </header>
+        <p class="simulator__help">Touch or click an object. Keyboard: 1, 2, 3.</p>
+        <div class="simulator__objects" id="simulator-objects"></div>
+        <p class="simulator__last-event" id="last-event" aria-live="polite">Last event: none</p>
+        <section class="midi-panel" aria-labelledby="midi-title">
+            <h2 id="midi-title">MIDI controller</h2>
+            <button class="midi-panel__connect" id="midi-connect" type="button">Connect MIDI</button>
+            <p class="midi-panel__status" id="midi-status" aria-live="polite">Not connected</p>
+            <ul class="midi-panel__devices" id="midi-devices" aria-label="Available MIDI inputs"></ul>
+        </section>
+    </aside>
+
+    <script src="sketch.js"></script>
+    <script src="shared-functions.js"></script>
+    <script src="virtual-input.js"></script>
+    <script src="midi-adapter.js"></script>
+</body>
+</html>

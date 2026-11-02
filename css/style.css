@@ -1,0 +1,192 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background: #000;
+    color: #eaffd6;
+    font-family: Arial, sans-serif;
+}
+
+canvas {
+    display: block;
+}
+
+.simulator {
+    position: fixed;
+    z-index: 1;
+    top: 24px;
+    right: 24px;
+    width: min(350px, calc(100vw - 32px));
+    padding: 18px;
+    border: 1px solid rgba(184, 255, 88, 0.24);
+    border-radius: 16px;
+    background: rgba(5, 10, 8, 0.88);
+    box-shadow: 0 0 32px rgba(184, 255, 88, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+.simulator__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.simulator__eyebrow {
+    margin-bottom: 5px;
+    color: #e77bc2;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+}
+
+.simulator h1 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.simulator__status {
+    padding: 5px 8px;
+    border: 1px solid rgba(184, 255, 88, 0.45);
+    border-radius: 999px;
+    color: #b8ff58;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+}
+
+.simulator__help {
+    margin: 8px 0 14px;
+    color: rgba(234, 255, 214, 0.62);
+    font-size: 12px;
+}
+
+.simulator__objects {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.simulator__object {
+    min-height: 68px;
+    padding: 8px 4px;
+    border: 1px solid rgba(184, 255, 88, 0.22);
+    border-radius: 12px;
+    background: rgba(184, 255, 88, 0.05);
+    color: #eaffd6;
+    cursor: pointer;
+    touch-action: none;
+    user-select: none;
+    transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+
+.simulator__object:hover,
+.simulator__object:focus-visible {
+    border-color: rgba(231, 123, 194, 0.8);
+    outline: none;
+}
+
+.simulator__object.is-active {
+    transform: scale(0.96);
+    border-color: #b8ff58;
+    background: rgba(184, 255, 88, 0.2);
+    box-shadow: 0 0 18px rgba(184, 255, 88, 0.22);
+}
+
+.simulator__object-name {
+    display: block;
+    font-size: 11px;
+}
+
+.simulator__object-note {
+    display: block;
+    margin-top: 5px;
+    color: #e77bc2;
+    font-size: 10px;
+}
+
+.simulator__midi-note {
+    display: block;
+    margin-top: 4px;
+    color: rgba(234, 255, 214, 0.55);
+    font-family: monospace;
+    font-size: 9px;
+}
+
+.simulator__last-event {
+    min-height: 16px;
+    margin-top: 14px;
+    color: #b8ff58;
+    font-family: monospace;
+    font-size: 11px;
+}
+
+.midi-panel {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(184, 255, 88, 0.18);
+}
+
+.midi-panel h2 {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.midi-panel__connect {
+    padding: 7px 10px;
+    border: 1px solid rgba(231, 123, 194, 0.5);
+    border-radius: 8px;
+    background: rgba(231, 123, 194, 0.1);
+    color: #ffd5f0;
+    cursor: pointer;
+}
+
+.midi-panel__connect:hover,
+.midi-panel__connect:focus-visible {
+    border-color: #e77bc2;
+    outline: none;
+}
+
+.midi-panel__connect:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.midi-panel__status,
+.midi-panel__devices {
+    margin-top: 8px;
+    color: rgba(234, 255, 214, 0.7);
+    font-size: 11px;
+}
+
+.midi-panel__devices {
+    max-height: 72px;
+    overflow: auto;
+    padding-left: 16px;
+}
+
+@media (max-width: 520px) {
+    .simulator {
+        top: auto;
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        width: auto;
+        max-height: calc(100vh - 24px);
+        overflow: auto;
+        padding: 12px;
+    }
+
+    .simulator__objects {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .simulator__object {
+        min-height: 54px;
+    }
+}
